@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#EE5522">
+	<!-- Primary Meta Tags -->
+	<title>LilScriptJS - JavaScript Framework</title>
+	<meta name="title" content="LilScriptJS - JavaScript Framework">
+	<meta name="description" content="LilScript was created by Dev Bash on 26th April, 2021
+ 	to make coding and debugging easier and faster, it comes with many debugging features.
+ 	LilScript is light-weight, fast, and easy to learn.">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://lilscriptjs.github.com/">
+	<meta property="og:title" content="LilScriptJS - JavaScript Framework">
+	<meta property="og:description" content="LilScript was created by Dev Bash on 26th April, 2021
+ 	to make coding and debugging easier and faster, it comes with many debugging features.
+ 	LilScript is light-weight, fast, and easy to learn.">
+	<meta property="og:image" content="back.png">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://lilscriptjs.github.com/">
+	<meta property="twitter:title" content="LilScriptJS - JavaScript Framework">
+	<meta property="twitter:description" content="LilScript was created by Dev Bash on 26th April, 2021
+ 	to make coding and debugging easier and faster, it comes with many debugging features.
+ 	LilScript is light-weight, fast, and easy to learn.">
+	<meta property="twitter:image" content="back.png">
+	
+    <script src="LilScriptJS/lilscript.js"></script>
+	<script src="lib/bootstrap.js"></script>
+	<script src="lib/codemirror.js"></script>
+	<script src="lib/javascript.js"></script>
+	<script src="lib/matchbrackets.js"></script>
+	<script src="lib/htmlmixed.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap.css">
+	<link rel="stylesheet" href="lib/codemirror.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img id="logo" src="logo.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="">Contributing</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="">Rating</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="">Buy Coffee</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Join</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<div id="github">
+<a href="https://lilscriptjs.github.com">
+<p>LilScriptJS</p>
+<img src="GitHub.png">
+</a>
+</div>
+<div class="card">
+  <div class="card-body">
+    LilScript is a JavaScript Framework<br>
+	That makes coding and debugging easier.
+  </div>
+</div>
+<div id="board">
+Introduction
+</div>
+<div id="write">
+ LilScript was created by <code>Dev Bash</code> on <code>26<sup>th</sup> April, 2021</code>
+ to make coding and debugging easier and faster, it comes with many debugging features.
+ <br>LilScript is light-weight, fast, and easy to learn.
+</div>
+
+<br>
+
+<div id="board">
+Using LilScriptJS
+</div>
+<div id="write">
+To use <code>LilScriptJS</code>, we have to first set the script type to <code>text/lilscript</code> in our script tag.
+Then write our code into the script tag or use the src attribute in our <code>JavaScript</code> code.<br>
+</div>
+<textarea id="use">
+<script type="text/lilscript" src="path/to/script.js">
+</script>
+OR
+<script type="text/lilscript">
+  box "hello";
+</script>
+</textarea>
+<script>
+  let use = document.getElementById("use");
+  var edit = CodeMirror.fromTextArea(use, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<div id="board">
+Examples
+</div>
+<div id="write">
+This is an example of <code>Boxing</code> in LilScript.<br>
+<code>Boxing</code> is the same as <code>Alerting</code> in JavaScript.
+</div>
+<textarea id="example">
+func hi(){
+  #This will box 'HI'
+  box "HI";
+}
+hi()
+</textarea>
+<center><button type="button" id="run" class="btn btn-dark run">Run</button></center>
+<script>
+  let example = document.getElementById("example");
+  var editor = CodeMirror.fromTextArea(example, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+
+<br>
+
+<div id="board">
+Commenting
+</div>
+<div id="write">
+<code>Commenting</code> in LilScript is easy and nice<br>
+It comes with 3 types of Comments including that of <code>Python</code>
+</div>
+<textarea id="comment">
+{"THIS IS A HEAD COMMENT"}
+
+#This is a single line comment
+
+@jump
+This is a multiline comment
+It can contain comments
+from many lines
+@land
+
+box "NOT COMMENTED";
+
+@stop
+
+box "COMMENTED";
+</textarea>
+<center><button type="button" id="run1" class="btn btn-dark run">Run</button></center>
+<script>
+  let comment = document.getElementById("comment");
+  var editor1 = CodeMirror.fromTextArea(comment, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run1");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor1.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+
+<br>
+
+<div id="board">
+Logging
+</div>
+<div id="write">
+<code>Logging</code> is used to log text to the console<br>
+Just like the <code>console.log</code> function.
+</div>
+<textarea id="log">
+func sayMyName(name){
+  log "My name is " + name;
+}
+sayMyName("Favour");
+</textarea>
+<center><button type="button" id="run2" class="btn btn-dark run">Run</button></center>
+<script>
+  let log = document.getElementById("log");
+  var editor2 = CodeMirror.fromTextArea(log, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run2");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor2.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Array Pushing
+</div>
+<div id="write">
+<code>LilScript</code> has a simple way of pushing items to array<br>
+Just like that of  <code>PHP</code>.
+</div>
+<textarea id="push">
+let friends = ["Keto","Praise"];
+friends[] = "Ese";
+friends[] = "Chisom";
+
+box friends;
+</textarea>
+<center><button type="button" id="run3" class="btn btn-dark run">Run</button></center>
+<script>
+  let push = document.getElementById("push");
+  var editor3 = CodeMirror.fromTextArea(push, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run3");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor3.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+String Reversing
+</div>
+<div id="write">
+<code>LilScript</code> has a string reversing method.<br>
+Just like that of <code>Python</code>
+</div>
+<textarea id="reverse">
+let string = "I LOVE FAVOUR";
+box string[::-1];
+</textarea>
+<center><button type="button" id="run4" class="btn btn-dark run">Run</button></center>
+<script>
+  let reverse = document.getElementById("reverse");
+  var editor4 = CodeMirror.fromTextArea(reverse, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run4");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor4.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Function
+</div>
+<div id="write">
+<code>Functions</code> in LilScript are declared with <code>func</code>.<br>
+Just like in <code>Dragon</code>
+</div>
+<textarea id="func">
+func greet(){
+  box "Greetings to you!";
+}
+
+let hello = func sayHello(name){
+  box "Hello, " + name;
+  greet();
+}
+
+hello("Bash");
+</textarea>
+<center><button type="button" id="run5" class="btn btn-dark run">Run</button></center>
+<script>
+  let func = document.getElementById("func");
+  var editor5 = CodeMirror.fromTextArea(func, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run5");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor5.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Import
+</div>
+<div id="write">
+<code>Import</code> in LilScript is used to import <code>functions</code> or other codes<br>
+into our current code and use them,<br>
+Just like in <code>Python</code> and <code>Java</code>.
+</div>
+<textarea id="imp">
+import sum,sub from math.js
+
+let a = 20;
+let b = 10
+
+sub(a,b);
+</textarea>
+<center><button type="button" id="run6" class="btn btn-dark run">Run</button></center>
+<script>
+  let imp = document.getElementById("imp");
+  var editor6 = CodeMirror.fromTextArea(imp, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run6");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor6.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Keywords
+</div>
+<div id="write">
+Lilscript <code>Keywords</code> are special words for caring out special operations in LilScript.<br>
+There start with <code>@</code> and some requires closing.<br>
+</div>
+<textarea id="key">
+box "I COME FIRST";
+
+@run
+  box "I COME LAST";
+@run
+</textarea>
+<center><button type="button" id="run7" class="btn btn-dark run">Run</button></center>
+<script>
+  let key = document.getElementById("key");
+  var editor7 = CodeMirror.fromTextArea(key, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run7");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor7.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Keyword: @var
+</div>
+<div id="write">
+The css <code>@var</code> helps to use JavaScript values in CSS.<br>
+But the assigned css <code>@var</code> most come from the root and not be a refrence.<br>
+</div>
+<div id="testing">
+<div class="greet">Hello</div>
+<p class="message">Welcome to our home page</p>
+</div>
+<textarea id="css_var">
+@var width = (screen.width - 40) + "px";
+
+@css
+.greet{
+  border:1px solid black;
+  width:@width;
+  color:orange;
+}
+.message{
+  color:navy
+}
+@css
+</textarea>
+<center><button type="button" id="run8" class="btn btn-dark run">Run</button></center>
+<script>
+  let css_var = document.getElementById("css_var");
+  var editor8 = CodeMirror.fromTextArea(css_var, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run8");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor8.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Keyword: @css
+</div>
+<div id="write">
+The <code>@css</code> keyword is used to embed css codes into LilScript.<br>
+</div>
+<div id="testing">
+<h1 class="welcome">Welcome to my page</h1>
+</div>
+<textarea id="css">
+@css
+.welcome{
+  color: teal;
+}
+@css
+</textarea>
+<center><button type="button" id="run9" class="btn btn-dark run">Run</button></center>
+<script>
+  let css = document.getElementById("css");
+  var editor9 = CodeMirror.fromTextArea(css, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run9");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor9.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Keyword: @run
+</div>
+<div id="write">
+Codes in between the <code>@run</code> keyword runs immediately the compiler gets to it.<br>
+</div>
+<textarea id="runIt">
+box "1";
+box "2";
+box "3";
+box "4";
+
+@run
+box "5";
+@run
+</textarea>
+<center><button type="button" id="run10" class="btn btn-dark run">Run</button></center>
+<script>
+  let runIt = document.getElementById("runIt");
+  var editor10 = CodeMirror.fromTextArea(runIt, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run10");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor10.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Keyword: @boxline and @logline
+</div>
+<div id="write">
+<code>@boxline</code> is used to box the number of the current line.<br>
+Same with <code>@logline</code> but it logs the number instead.
+</div>
+<textarea id="line">
+#THIS IS LINE 1
+
+
+
+#THIS IS LINE 5
+
+
+
+
+@boxline
+@logline
+</textarea>
+<center><button type="button" id="run11" class="btn btn-dark run">Run</button></center>
+<script>
+  let line = document.getElementById("line");
+  var editor11 = CodeMirror.fromTextArea(line, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run11");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor11.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Speed Test
+</div>
+<div id="write">
+<code>@startTime</code> and <code>@endTime</code> are used to calculate the execution time of our code.<br>
+It logs the time to the console.<br>
+</div>
+<textarea id="time">
+@startTime
+for(i=0;i<1000;i++){
+  
+}
+@endTime
+</textarea>
+<center><button type="button" id="run12" class="btn btn-dark run">Run</button></center>
+<script>
+  let time = document.getElementById("time");
+  var editor12 = CodeMirror.fromTextArea(time, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run12");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor12.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Selector
+</div>
+<div id="write">
+A <code>Selector</code> is used to select <code>HTML</code> Elements for manipulation.<br>
+</div>
+<div id="testing">
+<button id="btn">Click Me!</button>
+</div>
+<textarea id="select">
+let btn = @("#btn");
+btn.on("click", function(){
+  btn.html("Clicked!");
+})
+</textarea>
+<center><button type="button" id="run13" class="btn btn-dark run">Run</button></center>
+<script>
+  let select = document.getElementById("select");
+  var editor13 = CodeMirror.fromTextArea(select, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run13");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor13.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Event Listener
+</div>
+<div id="write">
+An <code>Event Listener</code> is used to listen for <code>Events</code> in our <code>JavaScript</code> code.<br>
+</div>
+<div id="testing">
+<button id="btn1">0</button>
+</div>
+<textarea id="listen">
+let i = 0;
+let btn = @("#btn1");
+btn.on("click", function(){
+  i++;
+  btn.html(i)
+});
+</textarea>
+<center><button type="button" id="run14" class="btn btn-dark run">Run</button></center>
+<script>
+  let listen = document.getElementById("listen");
+  var editor14 = CodeMirror.fromTextArea(listen, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run14");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor14.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+
+
+
+
+<br>
+<br>
+<footer>
+<center>
+<h5>Dev Bash - 2021</h5>
+<br>
+<p>Made with ❤️ from 🇳🇬 by Dev Bash</p>
+</center>
+</footer>
+</body>
+</html>
