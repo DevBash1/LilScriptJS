@@ -36,6 +36,7 @@
 	<script src="lib/javascript.js"></script>
 	<script src="lib/matchbrackets.js"></script>
 	<script src="lib/htmlmixed.js"></script>
+	<script src="script.js"></script>
 	<link rel="stylesheet" href="lib/bootstrap.css">
 	<link rel="stylesheet" href="lib/codemirror.css">
 	<link rel="stylesheet" href="style.css">
@@ -692,6 +693,105 @@ btn.on("click", function(){
   run.on("click",function(){
 	  try{
 		  eval(ls.run(editor14.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+<br>
+
+<div id="board">
+Getting and Setting Values
+</div>
+<div id="write">
+Getting values is easy in <code>LilScriptJS</code>
+using <code>.html()</code>,<code>.text()</code> and <code>.val()</code>.<br>
+It can also be used to set the values by passing values as a parameter.
+</div>
+
+<div id="testing">
+<h1 id="show">No Name Entered!</h1>
+<br>
+<input id="enter" placeholder="Enter your name">
+<button id="sendBtn">Send</button>
+</div>
+
+<textarea id="value">
+let btn = @("#sendBtn");
+let input = @("#enter");
+let show = @("#show");
+
+btn.on("click", function(){
+  if(input.val().trim() == ""){
+    box "Input is Empty";
+    return true;
+  }
+  show.text(input.val());
+});
+</textarea>
+<center><button type="button" id="run16" class="btn btn-dark run">Run</button></center>
+<script>
+  let value = document.getElementById("value");
+  var editor16 = CodeMirror.fromTextArea(value, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run16");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor16.getValue()));
+	  }catch(e){
+		  box e;
+	  }
+  })
+</script>
+
+<div id="board">
+Keyword: @find and @finds
+</div>
+<div id="write">
+<code>LilScript</code> has an easy way of getting <code>HTML</code> Elements for manipulation.<br>
+Using <code>@find</code> gets the first Element with the given text on it.<br>
+While <code>@finds</code> returns an array of all Elements with the given text.
+</div>
+
+<div id="testing">
+<h1 id="show1">2</h1>
+<br>
+<input id="enter1" value="1+1" placeholder="Enter Number">
+<button id="sendBtn1">Calculate</button>
+</div>
+
+<textarea id="find">
+let btn = @find("Calculate");
+let input = @("#enter1");
+let show = @("#show1");
+
+btn.on("click", function(){
+  if(input.val().trim() == ""){
+    box "Input is Empty";
+    return true;
+  }
+  show.text(eval(input.val()));
+});
+</textarea>
+<center><button type="button" id="run17" class="btn btn-dark run">Run</button></center>
+<script>
+  let find = document.getElementById("find");
+  var editor17 = CodeMirror.fromTextArea(find, {
+    lineNumbers: true,
+	matchBrackets: true,
+    mode: 'javascript',
+  });
+</script>
+<script type="text/lilscript">
+  let run = @("#run17");
+  run.on("click",function(){
+	  try{
+		  eval(ls.run(editor17.getValue()));
 	  }catch(e){
 		  box e;
 	  }
