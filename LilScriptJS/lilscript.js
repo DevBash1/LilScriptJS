@@ -383,13 +383,19 @@ function lilscript(){
         //string reverse
         if(compiled[i].trim().includes("[::-1]")){
             let line = compiled[i].trim();
-            compiled[i] = line.replace("[::-1]",".split('').reverse().join('')");
+            compiled[i] = line.replace("[::-1]",".toString().split('').reverse().join('')");
         }
 		
 		//Selector
 		if(compiled[i].fix().includes("@(") && compiled[i].fix().charAt(3) != ")" && compiled[i].fix().includes(")")){
 			let line = compiled[i].fix();
 			compiled[i] = compiled[i].fix().replace("@(","document.querySelector(")
+		}
+		if(compiled[i].trim().includes("@find(")){
+			compiled[i] = compiled[i].trim().replace("@find(","find_element(");
+		}
+		if(compiled[i].trim().includes("@finds(")){
+			compiled[i] = compiled[i].trim().replace("@finds(","finds_element(");
 		}
 
 		
@@ -413,7 +419,7 @@ function lilscript(){
 	}
 	return compiled.join("\n");
   }
-  this.version = 1.0;
+  this.version = "1.0";
 }
 
 /*
@@ -474,7 +480,7 @@ function importFunction(func){
               bracket2 = 0;
               codeInline = script[j];
 
-              if(codeInline.includes('function ' + word + '(') || codeInline.includes(word + ' = (')){
+              if(codeInline.includes('function ' + word + '(') || codeInline.includes(word + ' = (') || codeInline.includes('func ' + word + '(') || codeInline.includes(word + ' = (')){
                 //Add webroid comment
                 scriptBuilder += '\n //' + word + ' Imported with LilScript \n \n';
                 while(!stop){
@@ -516,4 +522,61 @@ function importFunction(func){
       return scriptBuilder;
   }
   return this;
+}
+
+//Finding Elements with text on them
+function find_element(text){
+    let elems =  document.querySelectorAll("*");
+    let len = elems.length;
+    let value = text.trim();
+
+    let val_elems = ["input","textarea","button","option","progress","li","meter","param"];
+    let elem_found;
+    
+    for(i=0;i<len;i++){
+        let elem = elems[i];
+        if(elem.value != undefined && (elem.value != 0 && elem.tagName.toLowerCase() != "li")){
+            if(elem.value.trim() == value){
+                elem_found = elem;
+                i = len;
+            }
+        }
+        if(elem.innerHTML != undefined){
+            if(elem.innerHTML.trim() == value){
+                elem_found = elem;
+                i = len;
+            }
+        }
+    }
+    if(elem_found == undefined){
+        return null;
+    }
+    return elem_found;
+}
+
+//Multiple
+function finds_element(text){
+    let elems =  document.querySelectorAll("*");
+    let len = elems.length;
+    let value = text.trim();
+
+    let elems_found = [];
+    
+    for(i=0;i<len;i++){
+        let elem = elems[i];
+        if(elem.value != undefined && (elem.value != 0 && elem.tagName.toLowerCase() != "li")){
+            if(elem.value.trim() == value){
+                elems_found.push(elem);
+            }
+        }
+        if(elem.innerHTML != undefined){
+            if(elem.innerHTML.trim() == value){
+                elems_found.push(elem);
+            }
+        }
+    }
+    if(elems_found.length == 0){
+        return null;
+    }
+    return elems_found;
 }
